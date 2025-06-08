@@ -1,3 +1,5 @@
+import StatsContainer from '@/components/user/StatsContainer.tsx';
+import UserCard from '@/components/user/UserCard.tsx';
 import { GET_USER } from '@/queries';
 import { UserData } from '@/types';
 import { useQuery } from '@apollo/client';
@@ -25,11 +27,16 @@ const UserProfile = ({userName}: UserProfileProps) => {
     following,
     gists,
   } = data.user;
-  console.log(data);
 
   return (
     <div>
-      <h1>{bio}</h1>
+      <UserCard avatarUrl={avatarUrl} name={name} bio={bio} url={url}/>
+      <StatsContainer
+        totalRepos={repositories.totalCount}
+        followers={followers.totalCount}
+        following={following.totalCount}
+        gists={gists.totalCount}
+      />
     </div>
   );
 };
