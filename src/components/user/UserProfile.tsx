@@ -1,3 +1,7 @@
+import ForkedRepos from '@/components/charts/ForkedRepos.tsx';
+import PopularRepos from '@/components/charts/PopularRepos.tsx';
+import UsedLanguages from '@/components/charts/UsedLanguages.tsx';
+import Loading from '@/components/user/Loading.tsx';
 import StatsContainer from '@/components/user/StatsContainer.tsx';
 import UserCard from '@/components/user/UserCard.tsx';
 import { GET_USER } from '@/queries';
@@ -13,7 +17,7 @@ const UserProfile = ({userName}: UserProfileProps) => {
     variables: {login: userName},
   });
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading/>;
   if (error) return <h2 className='text-xl'>{error.message}</h2>;
   if (!data) return <h2 className='text-xl'>User Not Found.</h2>;
 
@@ -37,6 +41,15 @@ const UserProfile = ({userName}: UserProfileProps) => {
         following={following.totalCount}
         gists={gists.totalCount}
       />
+      {
+        repositories.totalCount > 0 && (
+          <div className='grid md:grid-cols-2 gap-4'>
+            <UsedLanguages repositories={repositories.nodes}/>
+            <PopularRepos repositories={repositories.nodes}/>
+            <ForkedRepos repositories={repositories.nodes}/>
+          </div>
+        )
+      }
     </div>
   );
 };
