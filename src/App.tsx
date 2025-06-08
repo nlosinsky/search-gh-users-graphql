@@ -3,7 +3,7 @@ import UserProfile from '@/components/user/UserProfile.tsx';
 import { useState } from 'react';
 
 const App = () => {
-  const [userName, setUserName] = useState('nlosinsky');
+  const [userName, setUserName] = useState('gaearon');
 
   return (
     <main className='mx-auto max-w-6xl px-8 py-20'>

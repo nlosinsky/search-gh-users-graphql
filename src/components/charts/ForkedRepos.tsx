@@ -16,7 +16,7 @@ const ForkedRepos = ({repositories}: { repositories: Repository[] }) => {
     <div>
       <h2 className='text-2xl font-semibold text-center mb-4'>Forked Repos</h2>
 
-      <ChartContainer config={chartConfig} className='h-100 w-full'>
+      <ChartContainer config={chartConfig} className='h-100px w-full'>
         <BarChart accessibilityLayer data={mostForkedRepos}>
           <CartesianGrid vertical={false} />
 

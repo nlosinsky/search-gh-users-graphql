@@ -40,7 +40,7 @@ const SearchForm = ({userName, setUserName}: SearchFormProps) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder='Search Github User...'
-        className='flex-grow bg-background'
+        className='grow bg-background'
       />
       <Button type='submit'>Search</Button>
     </form>
